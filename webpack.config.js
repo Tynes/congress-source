@@ -3,8 +3,8 @@ module.exports = {
   entry: './client/entry.jsx',
   // webpack output to client/dist/bundle.js
   output: {
-    path: './client/dist',
-    publicPath: './client/dist',
+    path: './client/',
+    publicPath: './client/',
     filename: 'bundle.js',
   },
   module: {
