@@ -9,7 +9,7 @@ class App extends React.Component {
         <Navbar />
         <Http />
       </div>
-    )
+    );
   }
 }
 
