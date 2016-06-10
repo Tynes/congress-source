@@ -1,11 +1,10 @@
 import React from 'react';
+import AppBar from 'material-ui/AppBar';
 
 class Navbar extends React.Component {
   render() {
     return (
-      <div>
-        <h1>Navbar here</h1>
-      </div>
+      <AppBar />
     );
   }
 }
