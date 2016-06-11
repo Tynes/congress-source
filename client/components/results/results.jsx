@@ -1,6 +1,6 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
 import _ from 'underscore';
+import Result from '../result/result.jsx';
 
 class Results extends React.Component {
   constructor(props) {
@@ -10,9 +10,7 @@ class Results extends React.Component {
     return (
       <div>
         {_.map(this.props.members, member =>
-          <Paper>
-            <h1>{member.person.firstname}</h1>
-          </Paper>
+          <Result member={member} />
         )}
       </div>
     );
