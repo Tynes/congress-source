@@ -10,7 +10,7 @@ class Http extends React.Component {
       members: [],
     };
   }
-  componentDidMount() {
+  componentWillMount() {
     this.getMembers();
   }
   getMembers() {
@@ -18,11 +18,20 @@ class Http extends React.Component {
       .then(response => {
         console.log('res from json-server', response);
         const members = this.shapeData(response.data);
-        this.setState({ members: members });
+        this.setState({ members: members }, () => {
+          console.log('state set', this.state);
+        });
       });
   }
   shapeData(data) {
-    return _.map(data, member => _.pick(member, ['person', 'startdate', 'enddate', 'party', 'state', 'title_long', 'website']));
+    return _.map(data, member => {
+      const flattenedMember = _.extend(member, member.person);
+      const relevantProperties = [
+        'firstname', 'lastname', 'startdate',
+        'enddate', 'party', 'state', 'id',
+        'website', 'roletype', 'twitterid'];
+      return _.pick(flattenedMember, relevantProperties);
+    });
   }
 
   render() {
