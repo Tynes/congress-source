@@ -1,9 +1,20 @@
 import React from 'react';
+import Paper from 'material-ui/Paper';
+import _ from 'underscore';
 
 class Results extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
-      <h1>lol</h1>
+      <div>
+        {_.map(this.props.members, member =>
+          <Paper>
+            <h1>{member.person.firstname}</h1>
+          </Paper>
+        )}
+      </div>
     );
   }
 }
