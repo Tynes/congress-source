@@ -1,11 +1,18 @@
 import React from 'react';
+import Results from '../results/results.jsx';
 
 class Http extends React.Component {
   render() {
     return (
-      <h1>Http here</h1>
-    )
+      <Results />
+    );
   }
 }
 
 export default Http;
+
+/*
+Wraps around results
+Does the http requests then passes
+down the data to results
+*/
