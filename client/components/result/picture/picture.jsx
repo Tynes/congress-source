@@ -1,8 +1,11 @@
 import React from 'react';
 
 const Picture = ({ id }) => {
+  const url = `https://www.govtrack.us/data/photos/${id}-100px.jpeg`;
   return (
-    <h1>{id}</h1>
+    <div>
+      <img src={url} />
+    </div>
   );
 };
 
