@@ -28,10 +28,3 @@ class Result extends React.Component {
 }
 
 export default Result;
-
-/*
-
-<Info info={true} />
-<State state={this.props.state} />
-<Timer timer={true} />
-*/
