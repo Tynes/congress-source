@@ -27,9 +27,9 @@ class Http extends React.Component {
     return _.map(data, member => {
       const flattenedMember = _.extend(member, member.person);
       const relevantProperties = [
-        'firstname', 'lastname', 'startdate',
+        'firstname', 'lastname', 'startdate', 'role_type_label',
         'enddate', 'party', 'state', 'id',
-        'website', 'roletype', 'twitterid'];
+        'website', 'roletype', 'twitterid', 'link'];
       return _.pick(flattenedMember, relevantProperties);
     });
   }
