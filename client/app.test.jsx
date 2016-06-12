@@ -9,7 +9,7 @@ import Navbar from './Components/navbar/navbar.jsx';
 import Http from './Components/http/http.jsx';
 
 const expect = chai.expect;
-chai.use(chaiEnzyme()); // Note the invocation at the end
+chai.use(chaiEnzyme());
 
 describe('App Component', function () {
   let wrapper;
