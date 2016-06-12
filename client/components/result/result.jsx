@@ -15,6 +15,7 @@ class Result extends React.Component {
       <div>
         <Picture id={member.id} />
         <State state={member.state} />
+        <Timer enddate={member.enddate} />
         <Name firstname={member.firstname} lastname={member.lastname} />
       </div>
     );
