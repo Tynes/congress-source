@@ -10,9 +10,12 @@ class Result extends React.Component {
     console.log(this.props);
   }
   render() {
+    const member = this.props.member;
     return (
       <div>
-        <Picture id={this.props.member.id} />
+        <Picture id={member.id} />
+        <State state={member.state} />
+        <Name firstname={member.firstname} lastname={member.lastname} />
       </div>
     );
   }
@@ -22,7 +25,6 @@ export default Result;
 
 /*
 
-<Name name={this.props} />
 <Info info={true} />
 <State state={this.props.state} />
 <Timer timer={true} />
