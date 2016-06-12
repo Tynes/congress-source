@@ -5,7 +5,9 @@
   "main": "client/app.js",
   "scripts": {
     "test": "mocha ./.test-setup.js client/**/*.test.jsx",
-    "start": "webpack -w"
+    "start": "webpack -w",
+    "build-css": "node-sass client/styles/styles.sass client/styles/styles.css",
+    "watch-css": "node-sass -w client/styles/styles.sass client/styles/styles.css"
   },
   "repository": {
     "type": "git",
@@ -49,6 +51,8 @@
     "eslint-plugin-react": "^5.1.1",
     "jsdom": "^9.2.1",
     "mocha": "^2.5.3",
+    "node-sass": "^3.7.0",
+    "nodemon": "^1.9.2",
     "react-addons-test-utils": "^15.1.0"
   }
 }
