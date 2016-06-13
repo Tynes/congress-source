@@ -1,3 +1,2 @@
-body {
-  margin: 5;
-  background-color: #bada59; }
+@media (min-width: 1025px) {
+  width: 75%; }
