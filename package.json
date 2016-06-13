@@ -8,6 +8,7 @@
     "start": "webpack -w",
     "build-css": "node-sass client/styles/styles.sass client/styles/styles.css",
     "watch-css": "node-sass -w client/styles/styles.sass client/styles/styles.css",
+    "serve": "json-server db.json"
   },
   "repository": {
     "type": "git",
