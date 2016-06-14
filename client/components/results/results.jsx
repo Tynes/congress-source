@@ -8,7 +8,7 @@ class Results extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="members">
         {_.map(this.props.members, member =>
           <Result member={member} />
         )}

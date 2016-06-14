@@ -366,3 +366,11 @@ textarea {
 
 html {
   font-family: 'Roboto'; }
+
+.members {
+  display: flex;
+  flex-flow: row wrap; }
+
+.member {
+  border-style: solid;
+  border-width: 3px; }

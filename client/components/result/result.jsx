@@ -14,7 +14,7 @@ class Result extends React.Component {
   render() {
     const member = this.props.member;
     return (
-      <div>
+      <div className="member">
         <Picture id={member.id} />
         <State state={member.state} />
         <Timer enddate={member.enddate} />

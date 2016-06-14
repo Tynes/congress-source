@@ -1,8 +1,17 @@
-@import partials/_normalize
-@import partials/_include-media
-@import partials/_large-screen
+@import partials/normalize
+@import partials/include-media
+@import partials/medium-screen
 
 $font-stack: 'Roboto', sans-serif;
 
 html
   font-family: 'Roboto'
+
+.members
+  display: flex
+  flex-flow: row wrap
+
+.member
+  border:
+    style: solid
+    width: 3px
