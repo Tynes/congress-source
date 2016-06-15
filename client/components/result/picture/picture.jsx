@@ -4,7 +4,7 @@ const Picture = ({ id }) => {
   const url = `https://www.govtrack.us/data/photos/${id}-100px.jpeg`;
   return (
     <div>
-      <img src={url} />
+      <img src={url} className="picture" />
     </div>
   );
 };
