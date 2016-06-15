@@ -6,21 +6,25 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <TextField
-          floatingLabelText="Search Here"
-          hintText="Ex Chuck Schumer or New York"
-          floatingLabelFixed={true}
-        />
-        <RadioButtonGroup name="searchType" defaultSelected="state">
-          <RadioButton
-            value="state"
-            label="State"
+        <h1 className="row center-text">Search Through Members of the US Government</h1>
+        <div className="right-push">
+          <TextField
+            floatingLabelText="Search Here"
+            hintText="Ex Chuck Schumer or New York"
+            floatingLabelFixed={true}
+            className="row"
           />
-          <RadioButton
-            value="name"
-            label="Name"
-          />
-        </RadioButtonGroup>
+          <RadioButtonGroup name="searchType" defaultSelected="state" className="row">
+            <RadioButton
+              value="state"
+              label="State"
+            />
+            <RadioButton
+              value="name"
+              label="Name"
+            />
+          </RadioButtonGroup>
+        </div>
       </div>
     );
   }
