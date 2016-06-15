@@ -365,11 +365,12 @@ textarea {
   /* 2 */ }
 
 html {
-  font-family: 'Roboto'; }
+  font-family: "Roboto", sans-serif; }
 
 .members {
   display: flex;
-  flex-flow: row wrap; }
+  flex-flow: row wrap;
+  justify-content: space-around; }
 
 .member {
   border-style: solid;
