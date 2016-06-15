@@ -2,7 +2,7 @@ import React from 'react';
 
 const State = ({ state }) => {
   return (
-    <h3>{state}</h3>
+    <h3 className="result-top">{state}</h3>
   );
 };
 

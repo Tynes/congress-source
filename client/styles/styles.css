@@ -364,6 +364,11 @@ textarea {
   font: inherit;
   /* 2 */ }
 
+@media (min-width: 1025px) {
+  .member {
+    width: 20%;
+    text-align: center; } }
+
 html {
   font-family: "Roboto", sans-serif; }
 
@@ -379,3 +384,7 @@ html {
 .picture {
   -webkit-clip-path: ellipse(50% 50% at 50% 50%);
   clip-path: ellipse(50% 50% at 50% 50%); }
+
+.result-top {
+  display: inline-block;
+  width: 30%; }
