@@ -20,8 +20,10 @@ class Result extends React.Component {
           <Picture id={member.id} />
           <Timer enddate={member.enddate} />
         </div>
-        <Affiliation party={member.party} />
-        <Role role={member.role_type_label} />
+        <div>
+          <Affiliation party={member.party} />
+          <Role role={member.role_type_label} />
+        </div>
         <Name firstname={member.firstname} lastname={member.lastname} />
         <Social govtrack={member.link} twitter={member.twitterid} site={member.website} />
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Role = ({ role }) => <h3>{role}</h3>;
+const Role = ({ role }) => <h3 className="result-middle">{role}</h3>;
 
 export default Role;
