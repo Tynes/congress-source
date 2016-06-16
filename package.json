@@ -8,7 +8,9 @@
     "start": "webpack -w",
     "build-css": "node-sass client/styles/styles.sass client/styles/styles.css",
     "watch-css": "node-sass -w client/styles/styles.sass client/styles/styles.css",
-    "serve": "json-server db.json"
+    "serve-json": "json-server db.json",
+    "serve-dev": "ENV='dev' node server/server.js",
+    "serve": "nodemon -x npm run serve-dev"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "chai-enzyme": "^0.4.2",
     "express": "^4.13.4",
     "material-ui": "^0.15.0",
+    "mongodb": "^2.1.18",
     "mongoose": "^4.5.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
