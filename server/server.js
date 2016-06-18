@@ -14,7 +14,7 @@ require('./router.js')(app);
 // db.once('open', () => {
 //   console.log('open');
 //   // initial population of db
-//   const ff = memberCtrl.getMembers();
+//   const ff = memberCtrl.getRawMembers();
 
 //   ff.then(data => {
 //     memberCtrl.updateAll(data);

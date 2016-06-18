@@ -1,7 +1,11 @@
 const Member = require('../models/Member.js');
+
+/*
+** getMembers from congress API endpoint
+** to become a cron job
+
 const axios = require('axios');
 const _ = require('underscore');
-
 const shapeData = data => {
   return _.map(data, member => {
     const flattenedMember = _.extend(member, member.person);
@@ -12,18 +16,18 @@ const shapeData = data => {
     return _.pick(flattenedMember, relevantProperties);
   });
 };
-
-exports.getMembers = () => {
+exports.getRawMembers = () => {
   return axios.get('http://localhost:3000/objects?_start')
     .then(response => shapeData(response.data))
     .catch(err => console.error(err));
 };
-
 exports.updateAll = members => {
   members.forEach(member => {
     const model = new Member(member);
     model.save(err => {
       if (err) {
+        // TODO: Promisify
+        // TODO: logger
         console.error('error', err);
       } else {
         // console.log('success');
@@ -31,8 +35,12 @@ exports.updateAll = members => {
     });
   });
 };
+*/
+
+exports.getMembers = () => Member.find({}).exec();
+
 
 exports.getMember = query => {
   // const model = new Member(/* query */);
-  console.log(query);
+  // search for members
 };

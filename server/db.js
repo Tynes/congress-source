@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+
 const URI = process.env.MONGO_URI || 'mongodb://localhost/congress';
 
 mongoose.connect(URI, (err, res) => {
