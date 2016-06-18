@@ -14,13 +14,19 @@ class Http extends React.Component {
     this.getMembers();
   }
   getMembers() {
-    axios.get('http://localhost:3000/objects?_start=0&_end=10')
+    // axios.get('http://localhost:3000/objects?_start=0&_end=10')
+    //   .then(response => {
+    //     console.log('res from json-server', response);
+    //     const members = this.shapeData(response.data);
+    //     this.setState({ members: members }, () => {
+    //       console.log('state set', this.state);
+    //     });
+    //   });
+
+    // query mongodb for all
+    axios.get('/members')
       .then(response => {
-        console.log('res from json-server', response);
-        const members = this.shapeData(response.data);
-        this.setState({ members: members }, () => {
-          console.log('state set', this.state);
-        });
+        console.log(response);
       });
   }
   shapeData(data) {

@@ -31,3 +31,8 @@ exports.updateAll = members => {
     });
   });
 };
+
+exports.getMember = query => {
+  // const model = new Member(/* query */);
+  console.log(query);
+};
