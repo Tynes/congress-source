@@ -48,8 +48,8 @@ exports.syncDB = members => {
 
 exports.getMembers = () => Member.find({}).exec();
 
-exports.getMembersBetween = (lessThan, greaterThan) => {
-  Member.find({})
+exports.getMembersBetween = (begin, end) => {
+  return Member.find({ queryID: { $gte: begin, $lt: end } }).exec();
 };
 
 exports.getMember = query => {
