@@ -32,16 +32,17 @@ const shapeData = data => _.map(data, (member, id) => {
   return _.pick(flattenedMember, relevantProperties);
 });
 
-exports.getRawMembers = () => axios.get('http://localhost:3000/objects?_start')
+exports.getRawMembers = () => axios.get('http://localhost:3000/objects')
     .then(response => shapeData(response.data))
     .catch(err => console.error(err));
 
+// TODO: log the diff between the new members and the ones in the db already
 exports.syncDB = members => {
   members.forEach(member => {
     const model = new Member(member);
-    model.save().exec()
-      .then(updated => console.log('success'))
-      .catch(err => console.log('error', err));
+    model.save()
+      .then()
+      .catch(err => console.log('err', err));
   });
 };
 
