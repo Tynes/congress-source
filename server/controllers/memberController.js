@@ -1,27 +1,11 @@
 const Member = require('../models/Member.js');
+const axios = require('axios');
+const _ = require('underscore');
 
 /*
 ** getMembers from congress API endpoint
 ** to become a cron job
 
-const axios = require('axios');
-const _ = require('underscore');
-const shapeData = data => {
-  return _.map(data, (member, id) => {
-    const queryID = { queryID: id };
-    const flattenedMember = _.extend(member, member.person, queryID);
-    const relevantProperties = [
-      'firstname', 'lastname', 'startdate', 'role_type_label',
-      'enddate', 'party', 'state', 'id', 'queryID',
-      'website', 'roletype', 'twitterid', 'link'];
-    return _.pick(flattenedMember, relevantProperties);
-  });
-};
-exports.getRawMembers = () => {
-  return axios.get('http://localhost:3000/objects?_start')
-    .then(response => shapeData(response.data))
-    .catch(err => console.error(err));
-};
 exports.updateAll = members => {
   members.forEach(member => {
     const model = new Member(member);
@@ -37,6 +21,22 @@ exports.updateAll = members => {
   });
 };
 */
+
+const shapeData = data => {
+  return _.map(data, (member, id) => {
+    const queryID = { queryID: id };
+    const flattenedMember = _.extend(member, member.person, queryID);
+    const relevantProperties = [
+      'firstname', 'lastname', 'startdate', 'role_type_label',
+      'enddate', 'party', 'state', 'id', 'queryID',
+      'website', 'roletype', 'twitterid', 'link'];
+    return _.pick(flattenedMember, relevantProperties);
+  });
+};
+
+exports.getRawMembers = () => axios.get('http://localhost:3000/objects?_start')
+    .then(response => shapeData(response.data))
+    .catch(err => console.error(err));
 
 exports.syncDB = members => {
   members.forEach(member => {

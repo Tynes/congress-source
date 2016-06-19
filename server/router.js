@@ -1,4 +1,3 @@
-const db = require('./db.js');
 const memberCtrl = require('./controllers/memberController.js');
 
 module.exports = app => {
