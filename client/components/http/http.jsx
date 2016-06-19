@@ -1,7 +1,6 @@
 import React from 'react';
 import Results from '../results/results.jsx';
 import axios from 'axios';
-import _ from 'underscore';
 
 class Http extends React.Component {
   constructor() {

@@ -22,17 +22,15 @@ exports.updateAll = members => {
 };
 */
 
-const shapeData = data => {
-  return _.map(data, (member, id) => {
-    const queryID = { queryID: id };
-    const flattenedMember = _.extend(member, member.person, queryID);
-    const relevantProperties = [
-      'firstname', 'lastname', 'startdate', 'role_type_label',
-      'enddate', 'party', 'state', 'id', 'queryID',
-      'website', 'roletype', 'twitterid', 'link'];
-    return _.pick(flattenedMember, relevantProperties);
-  });
-};
+const shapeData = data => _.map(data, (member, id) => {
+  const queryID = { queryID: id };
+  const flattenedMember = _.extend(member, member.person, queryID);
+  const relevantProperties = [
+    'firstname', 'lastname', 'startdate', 'role_type_label',
+    'enddate', 'party', 'state', 'id', 'queryID',
+    'website', 'roletype', 'twitterid', 'link'];
+  return _.pick(flattenedMember, relevantProperties);
+});
 
 exports.getRawMembers = () => axios.get('http://localhost:3000/objects?_start')
     .then(response => shapeData(response.data))
