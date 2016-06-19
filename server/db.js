@@ -3,12 +3,8 @@ mongoose.Promise = require('bluebird');
 
 const URI = process.env.MONGO_URI || 'mongodb://localhost/congress';
 
-mongoose.connect(URI, (err, res) => {
-  if (err) {
-    console.log(`Error connecting to ${URI}, ${err}`);
-  } else {
-    console.log(`Successful connection to ${URI}`);
-  }
-});
+mongoose.connect(URI)
+  .then(res => console.log(`Successful connection to ${URI}`))
+  .catch(err => console.log(`error connecting to db, ${err}`));
 
 module.exports = mongoose.connection;
