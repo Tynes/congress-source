@@ -7,6 +7,7 @@ const memberSchema = new Schema({
   startdate: String,
   enddate: String,
   id: Number,
+  queryID: Number,
   party: String,
   state: String,
   role_type_label: String,
