@@ -1,6 +1,9 @@
 import React from 'react';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
+import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward';
+import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
 const style = {
   width: '376px',
@@ -32,6 +35,8 @@ class Search extends React.Component {
               label="Name"
             />
           </RadioButtonGroup>
+          <FlatButton icon={<ArrowBack />} />
+          <FlatButton icon={<ArrowForward />} />
         </div>
       </div>
     );
