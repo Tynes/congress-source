@@ -35,8 +35,14 @@ class Search extends React.Component {
               label="Name"
             />
           </RadioButtonGroup>
-          <FlatButton icon={<ArrowBack />} />
-          <FlatButton icon={<ArrowForward />} />
+          <FlatButton
+            icon={<ArrowBack />}
+            onClick={() => console.log('click')}
+          />
+          <FlatButton
+            icon={<ArrowForward />}
+            onClick={() => this.props.getNextMembers()}
+          />
         </div>
       </div>
     );
