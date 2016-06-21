@@ -36,7 +36,7 @@ class Http extends React.Component {
     return (
       <Results
         members={this.state.members}
-        getMembersBetween={this.getMembersBetween}
+        getMembersBetween={this.getMembersBetween.bind(this)}
         end={this.state.end}
       />
     );
