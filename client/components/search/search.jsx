@@ -54,5 +54,7 @@ export default Search;
 /*
 2 options to search by
 state and name
-
+TODO: Turn off button based on this.props.end
+TODO: Turn off button if searching, no results
+  should return > 8
 */
