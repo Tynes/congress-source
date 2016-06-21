@@ -12,13 +12,13 @@ class Http extends React.Component {
     };
   }
   componentWillMount() {
-    // this.getMembers();
+    // initial population of members
     this.getMembersBetween(0, 8, 8);
   }
   getMembers() {
     // query for all members
     axios.get('/allMembers')
-      .then(response => this.setState({ members: response.data }, () => console.log(this.state)))
+      .then(response => this.setState({ members: response.data }))
       .catch(err => console.log('error getting all members', err));
   }
   getMembersBetween(begin, end, shift) {
@@ -32,6 +32,7 @@ class Http extends React.Component {
       })
       .catch(err => console.log('error getting members between', err));
   }
+  // will display 8 members per page
   getNextMembers() {
     this.getMembersBetween(this.state.end - 8, this.state.end, 8);
   }
