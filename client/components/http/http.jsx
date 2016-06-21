@@ -9,6 +9,7 @@ class Http extends React.Component {
     this.state = {
       members: [],
       end: 8,
+      party: undefined,
     };
   }
   componentWillMount() {
@@ -20,6 +21,18 @@ class Http extends React.Component {
     axios.get('/allMembers')
       .then(response => this.setState({ members: response.data }))
       .catch(err => console.log('error getting all members', err));
+  }
+  getParty(party) {
+    axios.get(`/party?party=${party}`)
+      .then(response => {
+        const state = {
+          members: response.data,
+          end: 8,
+          party: party,
+        };
+        this.setState(state);
+      })
+      .catch(err => console.log('error get party', err));
   }
   getMembersBetween(begin, end, shift) {
     axios.get(`/members?begin=${begin}&end=${end}`)
@@ -46,6 +59,8 @@ class Http extends React.Component {
         <Search
           getNextMembers={this.getNextMembers.bind(this)}
           getPrevMembers={this.getPrevMembers.bind(this)}
+          getParty={this.getParty.bind(this)}
+          party={this.props.party}
         />
         <Results
           members={this.state.members}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+import Checkbox from 'material-ui/Checkbox';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward';
@@ -16,7 +17,7 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="row center-text">Search Through Members of the US Government</h1>
+        <h1 className="row">Search Through Members of the US Government</h1>
         <div className="right-push">
           <TextField
             floatingLabelText="Search Here"
@@ -35,6 +36,18 @@ class Search extends React.Component {
               label="Name"
             />
           </RadioButtonGroup>
+          <div className="row">
+            <Checkbox
+              label="Republican"
+              checked={this.props.party === 'republican'}
+              onCheck={this.props.getParty('republican')}
+            />
+            <Checkbox
+              label="Democrat"
+              checked={this.props.party === 'democrat'}
+              onCheck={this.props.getParty('democrat')}
+            />
+          </div>
           <FlatButton
             icon={<ArrowBack />}
             onClick={() => this.props.getPrevMembers()}
