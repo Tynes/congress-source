@@ -8,17 +8,17 @@ class Http extends React.Component {
     super();
     this.state = {
       members: [],
-      end: 16,
+      end: 8,
     };
   }
   componentWillMount() {
     // this.getMembers();
-    this.getMembersBetween(0, 16, 16);
+    this.getMembersBetween(0, 8, 8);
   }
   getMembers() {
     // query for all members
     axios.get('/allMembers')
-      .then(response => this.setState({ members: response.data }))
+      .then(response => this.setState({ members: response.data }, () => console.log(this.state)))
       .catch(err => console.log('error getting all members', err));
   }
   getMembersBetween(begin, end, shift) {
@@ -33,10 +33,10 @@ class Http extends React.Component {
       .catch(err => console.log('error getting members between', err));
   }
   getNextMembers() {
-    this.getMembersBetween(this.state.end - 16, this.state.end, 16);
+    this.getMembersBetween(this.state.end - 8, this.state.end, 8);
   }
   getPrevMembers() {
-    //
+    this.getMembersBetween(this.state.end - 24, this.state.end - 16, -8);
   }
 
   render() {

@@ -37,7 +37,7 @@ class Search extends React.Component {
           </RadioButtonGroup>
           <FlatButton
             icon={<ArrowBack />}
-            onClick={() => console.log('click')}
+            onClick={() => this.props.getPrevMembers()}
           />
           <FlatButton
             icon={<ArrowForward />}
