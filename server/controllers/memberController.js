@@ -32,6 +32,7 @@ const shapeData = data => _.map(data, (member, id) => {
   return _.pick(flattenedMember, relevantProperties);
 });
 
+// replace localhost with the opengov api end point
 exports.getRawMembers = () => axios.get('http://localhost:3000/objects')
     .then(response => shapeData(response.data))
     .catch(err => console.error(err));
@@ -48,9 +49,9 @@ exports.syncDB = members => {
 
 exports.getMembers = () => Member.find({}).exec();
 
-exports.getMembersBetween = (begin, end) => {
-  return Member.find({ queryID: { $gte: begin, $lt: end } }).exec();
-};
+exports.getMembersBetween = (begin, end) => Member.find({ queryID: { $gte: begin, $lt: end } }).exec();
+
+exports.getMembersInParty = party => Member.find({ party: party }).exec();
 
 exports.getMember = query => {
   // const model = new Member(/* query */);

@@ -9,7 +9,7 @@ import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 const style = {
   width: '376px',
 };
-
+// give state to checkboxes so that they can be clicked
 // style sets the width of the form
 // need to figure out how to make it responsive
 
@@ -40,12 +40,12 @@ class Search extends React.Component {
             <Checkbox
               label="Republican"
               checked={this.props.party === 'republican'}
-              onCheck={this.props.getParty('republican')}
+              onCheck={() => this.props.getParty('Republican', 0)}
             />
             <Checkbox
               label="Democrat"
               checked={this.props.party === 'democrat'}
-              onCheck={this.props.getParty('democrat')}
+              onCheck={() => this.props.getParty('Democrat', 0)}
             />
           </div>
           <FlatButton

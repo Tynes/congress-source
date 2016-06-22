@@ -13,4 +13,11 @@ module.exports = app => {
       .then(members => res.send(members))
       .catch(err => console.log('error in route', err));
   });
+  app.get('/party', (req, res) => {
+    const party = req.query.party;
+    const slice = req.query.slice;
+    memberCtrl.getMembersInParty(party)
+      .then(members => res.send(members.slice(slice, slice + 8)))
+      .catch(err => console.log('error in /party', err));
+  });
 };
