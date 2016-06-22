@@ -39,13 +39,13 @@ class Search extends React.Component {
           <div className="row">
             <Checkbox
               label="Republican"
-              checked={this.props.party === 'republican'}
-              onCheck={() => this.props.getParty('Republican', 0)}
+              checked={this.props.party === 'Republican'}
+              onCheck={() => this.props.handleCheck('Republican', 0)}
             />
             <Checkbox
               label="Democrat"
-              checked={this.props.party === 'democrat'}
-              onCheck={() => this.props.getParty('Democrat', 0)}
+              checked={this.props.party === 'Democrat'}
+              onCheck={() => this.props.handleCheck('Democrat', 0)}
             />
           </div>
           <FlatButton

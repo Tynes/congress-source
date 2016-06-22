@@ -37,6 +37,14 @@ class Http extends React.Component {
       .catch(err => console.log('error get party', err));
   }
 
+  handleCheck(party, slice) {
+    if (this.state.party === party) {
+      this.setState({ party: undefined }, () => this.getMembersBetween(0, 8, 8));
+    } else {
+      this.getParty(party, slice);
+    }
+  }
+
   getMembersBetween(begin, end, shift) {
     axios.get(`/members?begin=${begin}&end=${end}`)
       .then(response => {
@@ -62,7 +70,7 @@ class Http extends React.Component {
         <Search
           getNextMembers={this.getNextMembers.bind(this)}
           getPrevMembers={this.getPrevMembers.bind(this)}
-          getParty={this.getParty.bind(this)}
+          handleCheck={this.handleCheck.bind(this)}
           party={this.state.party}
         />
         <Results
