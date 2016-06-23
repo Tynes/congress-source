@@ -23,12 +23,13 @@ class Http extends React.Component {
       .catch(err => console.log('error getting all members', err));
   }
 
-  getParty(party, slice) {
-    axios.get(`/party?party=${party}&slice=${slice}`)
+  getPartyMembersBetween(party, begin, end, shift) {
+    axios.get(`/party?party=${party}&begin=${begin}&end=${end}`)
       .then(response => {
+        console.log('shift', shift);
         const state = {
           members: response.data,
-          end: slice + 8,
+          end: this.state.end + shift,
           party: party,
         };
         console.log('state from party', state);
@@ -37,11 +38,11 @@ class Http extends React.Component {
       .catch(err => console.log('error get party', err));
   }
 
-  handleCheck(party, slice) {
+  handleCheck(party) {
     if (this.state.party === party) {
       this.setState({ party: undefined }, () => this.getMembersBetween(0, 8, 8));
     } else {
-      this.getParty(party, slice);
+      this.getPartyMembersBetween(party, 0, 8, 8);
     }
   }
 
@@ -58,9 +59,16 @@ class Http extends React.Component {
   }
   // will display 8 members per page
   getNextMembers() {
-    this.getMembersBetween(this.state.end - 8, this.state.end, 8);
+    if (this.state.party) {
+      this.getPartyMembersBetween(this.state.party, this.state.end - 8, this.state.end, 8);
+    } else {
+      this.getMembersBetween(this.state.end - 8, this.state.end, 8);
+    }
   }
   getPrevMembers() {
+    if (this.state.party) {
+      this.getPartyMembersBetween(this.state.party, this.state.end - 24, this.state.end - 16, -8);
+    }
     this.getMembersBetween(this.state.end - 24, this.state.end - 16, -8);
   }
 
