@@ -14,12 +14,22 @@ const style = {
 // need to figure out how to make it responsive
 
 class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: '',
+    };
+  }
+  handleChange(event) {
+    this.setState({ search: event.target.value }, () => this.props.handleSearch(this.state.search));
+  }
   render() {
     return (
       <div>
         <h1 className="row">Search Through Members of the US Government</h1>
         <div className="right-push">
           <TextField
+            onChange={this.handleChange.bind(this)}
             floatingLabelText="Search Here"
             hintText="Ex Chuck Schumer or New York"
             floatingLabelFixed={true}
