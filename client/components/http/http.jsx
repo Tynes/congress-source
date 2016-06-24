@@ -71,11 +71,24 @@ class Http extends React.Component {
     }
     this.getMembersBetween(this.state.end - 24, this.state.end - 16, -8);
   }
+  search(query) {
+    axios.get(`/search?name=${query}`)
+      .then(response => {
+        const state = {
+          members: response.data,
+          end: 8,
+          party: undefined,
+        };
+        this.setState(state);
+      })
+      .catch(err => console.log('error in search', err));
+  }
 
   render() {
     return (
       <div>
         <Search
+          search={this.search.bind(this)}
           getNextMembers={this.getNextMembers.bind(this)}
           getPrevMembers={this.getPrevMembers.bind(this)}
           handleCheck={this.handleCheck.bind(this)}
