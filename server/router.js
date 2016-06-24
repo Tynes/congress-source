@@ -1,3 +1,4 @@
+const Promise = require('bluebird');
 const memberCtrl = require('./controllers/memberController.js');
 
 module.exports = app => {
@@ -26,18 +27,12 @@ module.exports = app => {
   });
   app.get('/search', (req, res) => {
     const query = req.query.name;
-    let membersByLast;
-    let membersByFirst;
-    memberCtrl.searchByLastName(query)
-      .then(members => {
-        membersByLast = members;
+    const searchByLastName = memberCtrl.searchByLastName;
+    const searchByFirstName = memberCtrl.searchByFirstName;
+    Promise.all([searchByLastName(query), searchByFirstName(query)])
+      .then(results => {
+        res.send(results[0].concat(results[1]));
       })
-      .catch(err => console.log('error in membersByLast', err));
-    memberCtrl.searchByFirstName(query)
-      .then(members => {
-        membersByFirst = members;
-      })
-      .catch(err => console.log('error in membersByFirst', err));
-    return membersByLast.concat(membersByFirst);
+      .catch(err => console.log('error in search', err));
   });
 };
