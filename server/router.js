@@ -24,4 +24,20 @@ module.exports = app => {
       })
       .catch(err => console.log('error in /party', err));
   });
+  app.get('/search', (req, res) => {
+    const query = req.query.name;
+    let membersByLast;
+    let membersByFirst;
+    memberCtrl.searchByLastName(query)
+      .then(members => {
+        membersByLast = members;
+      })
+      .catch(err => console.log('error in membersByLast', err));
+    memberCtrl.searchByFirstName(query)
+      .then(members => {
+        membersByFirst = members;
+      })
+      .catch(err => console.log('error in membersByFirst', err));
+    return membersByLast.concat(membersByFirst);
+  });
 };
