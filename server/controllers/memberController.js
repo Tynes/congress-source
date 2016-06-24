@@ -53,7 +53,6 @@ exports.getMembersBetween = (begin, end) => Member.find({ queryID: { $gte: begin
 
 exports.getMembersInParty = party => Member.find({ party: party }).exec();
 
-exports.getMember = query => {
-  // const model = new Member(/* query */);
-  // search for members
-};
+exports.searchByFirstName = query => Member.find({ firstname: new RegExp(`^${query}, i`) }).exec();
+
+exports.searchByLastName = query => Member.find({ lastname: new RegExp(`^${query}, i`) }).exec();
