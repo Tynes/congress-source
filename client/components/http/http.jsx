@@ -84,9 +84,10 @@ class Http extends React.Component {
       .catch(err => console.log('error in search', err));
   }
   handleSearch(query) {
-    console.log(query);
     if (query.length > 2) {
       this.search(query);
+    } else if (query.length <= 1) {
+      this.getMembersBetween(0, 8, 8);
     }
   }
 
