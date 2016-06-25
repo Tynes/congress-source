@@ -36,7 +36,12 @@ class Search extends React.Component {
             className="row"
             style={style}
           />
-          <RadioButtonGroup name="searchType" defaultSelected="state" className="row">
+          <RadioButtonGroup
+            name="searchType"
+            defaultSelected="state"
+            className="row"
+            onChange={(e, val) => this.props.handleSearchToggle(val)}
+          >
             <RadioButton
               value="state"
               label="State"
