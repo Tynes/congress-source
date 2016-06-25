@@ -10,6 +10,7 @@ class Http extends React.Component {
       members: [],
       end: 8,
       party: undefined,
+      searchBy: 'state',
     };
   }
   componentWillMount() {
@@ -31,6 +32,7 @@ class Http extends React.Component {
           members: response.data,
           end: this.state.end + shift,
           party: party,
+          searchBy: this.state.searchBy,
         };
         console.log('state from party', state);
         this.setState(state);
@@ -78,16 +80,39 @@ class Http extends React.Component {
           members: response.data,
           end: 8,
           party: undefined,
+          searchBy: this.state.searchBy,
         };
         this.setState(state);
       })
       .catch(err => console.log('error in search', err));
   }
+  searchByState(query) {
+    axios.get(`/state?state=${query}`)
+      .then(response => {
+        const state = {
+          members: response.data,
+          end: 8,
+          party: undefined,
+          searchBy: this.state.searchBy,
+        };
+        this.setState(state);
+      })
+      .catch(err => console.log('error in searchByState', err));
+  }
+  handleSearchToggle(parameter) {
+    this.setState({ searchBy: parameter });
+  }
   handleSearch(query) {
-    if (query.length > 2) {
-      this.search(query);
-    } else if (query.length <= 1) {
-      this.getMembersBetween(0, 8, 8);
+    if (this.state.searchBy === 'name') {
+      if (query.length > 2) {
+        this.search(query);
+      } else if (query.length <= 1) {
+        this.getMembersBetween(0, 8, 8);
+      }
+    } else if (this.state.searchBy === 'state') {
+      if (query.length > 1) {
+        this.searchByState(query);
+      }
     }
   }
 
@@ -100,6 +125,7 @@ class Http extends React.Component {
           getPrevMembers={this.getPrevMembers.bind(this)}
           handleCheck={this.handleCheck.bind(this)}
           party={this.state.party}
+          handleSearchToggle={this.handleSearchToggle.bind(this)}
         />
         <Results
           members={this.state.members}
