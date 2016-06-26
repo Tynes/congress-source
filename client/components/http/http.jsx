@@ -112,6 +112,8 @@ class Http extends React.Component {
     } else if (this.state.searchBy === 'state') {
       if (query.length > 1) {
         this.searchByState(query);
+      } else if (query.length <= 1) {
+        this.getMembersBetween(0, 8, 8);
       }
     }
   }
