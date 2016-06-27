@@ -5,6 +5,8 @@ const stateMap = require('../stateMap.js');
 
 exports.extract = (data, begin, end) => data.slice(begin, end);
 
+exports.getAllMembers = () => memberCtrl.getMembers();
+
 exports.getAllByNameAndParty = (query, party) => {
   const searchByLastNameAndParty = memberCtrl.searchByLastNameAndParty;
   const searchByFirstNameAndParty = memberCtrl.searchByFirstNameAndParty;
