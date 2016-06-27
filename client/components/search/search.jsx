@@ -9,9 +9,6 @@ import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 const style = {
   width: '376px',
 };
-// give state to checkboxes so that they can be clicked
-// style sets the width of the form
-// need to figure out how to make it responsive
 
 class Search extends React.Component {
   constructor(props) {
@@ -21,7 +18,7 @@ class Search extends React.Component {
     };
   }
   handleChange(event) {
-    this.setState({ search: event.target.value }, () => this.props.handleSearch(this.state.search));
+    this.setState({ search: event.target.value }, () =>this.props.handleSearch(this.state.search, 0));
   }
   render() {
     return (
