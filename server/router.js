@@ -1,6 +1,7 @@
 const Promise = require('bluebird');
 const _ = require('underscore');
 const memberCtrl = require('./controllers/memberController.js');
+const searchMethods = require('./controllers/searchMethods.js');
 const stateMap = require('./stateMap.js');
 
 module.exports = app => {
@@ -60,6 +61,45 @@ module.exports = app => {
           res.send(members);
         })
         .catch(err => console.log('error in /state', err));
+    }
+  });
+
+  // //////////////////////////////
+  // Single function that handles all search
+  // not hooked into front end yet
+  app.get('/searchtest', (req, res) => {
+    const type = req.query.type;
+    const party = req.query.party;
+    const query = req.query.query;
+    const begin = req.query.begin || 0;
+    const end = req.query.end || 8;
+    // control flow first for name vs state
+    if (type === 'name') {
+      if (party) {
+        searchMethods.getAllByNameAndParty(query, party)
+          .then(response => searchMethods.extract(response, begin, end))
+          .then(response => res.send(response))
+          .catch(err => console.log('error in router, getAllByName', err));
+      } else {
+        searchMethods.getAllByName(query)
+          .then(response => searchMethods.extract(response, begin, end))
+          .then(response => res.send(response))
+          .catch(err => console.log('error in search getAllByName', err));
+      }
+    } else if (type === 'state') {
+      if (party) {
+        searchMethods.getAllByStateAndParty(query, party)
+          .then(response => searchMethods.extract(response, begin, end))
+          .then(response => res.send(response))
+          .catch(err => console.log('error in search getAllByStateAndParty', err));
+      } else {
+        searchMethods.getAllByState(query)
+          .then(response => searchMethods.extract(response, begin, end))
+          .then(response => res.send(response))
+          .catch(err => console.log('error in search get all by state', err));
+      }
+    } else {
+      res.send(404);
     }
   });
 };
