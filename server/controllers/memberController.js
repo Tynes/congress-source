@@ -57,4 +57,10 @@ exports.searchByFirstName = query => Member.find({ firstname: new RegExp(`^${que
 
 exports.searchByLastName = query => Member.find({ lastname: new RegExp(`^${query}`, 'i') }).exec();
 
+exports.searchByFirstNameAndParty = (query, party) => Member.find({ firstname: new RegExp(`^${query}`, 'i'), party: party }).exec();
+
+exports.searchByLastNameAndParty = (query, party) => Member.find({ lastname: new RegExp(`^${query}`, 'i'), party: party }).exec();
+
 exports.searchByStateAbbr = query => Member.find({ state: new RegExp(`^${query}`, 'i') }).exec();
+
+exports.searchByStateAbbrAndParty = (query, party) => Member.find({ state: new RegExp(`^${query}`, 'i'), party: party }).exec();
