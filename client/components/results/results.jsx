@@ -11,7 +11,7 @@ class Results extends React.Component {
     return (
       <div className="members">
         {_.map(this.props.members, member =>
-          <Result member={member} />
+          <Result key={member.queryID} member={member} />
         )}
       </div>
     );
