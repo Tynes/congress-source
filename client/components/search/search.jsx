@@ -20,6 +20,15 @@ class Search extends React.Component {
   handleChange(event) {
     this.setState({ search: event.target.value }, () =>this.props.handleSearch(this.state.search, 0));
   }
+  handlePartyChange(party) {
+    this.setState({ search: '' }, () => this.searchbar.input.value = '');
+    // this method of clearing the search bar does not work still
+    this.props.handlePartyChange(party);
+  }
+  handleSeachByToggle(searchBy) {
+    this.searchbar.input.value = '';
+    this.props.handleSearchByToggle(searchBy);
+  }
   render() {
     return (
       <div>
@@ -32,12 +41,13 @@ class Search extends React.Component {
             floatingLabelFixed={true}
             className="row"
             style={style}
+            ref={i => this.searchbar = i}
           />
           <RadioButtonGroup
             name="searchType"
             defaultSelected="state"
             className="row"
-            onChange={(e, val) => this.props.handleSearchToggle(val)}
+            onChange={(e, val) => this.props.handleSearchByToggle(val)}
           >
             <RadioButton
               value="state"
@@ -52,12 +62,12 @@ class Search extends React.Component {
             <Checkbox
               label="Republican"
               checked={this.props.party === 'Republican'}
-              onCheck={() => this.props.handleCheck('Republican', 0)}
+              onCheck={() => this.props.handlePartyChange('Republican')}
             />
             <Checkbox
               label="Democrat"
               checked={this.props.party === 'Democrat'}
-              onCheck={() => this.props.handleCheck('Democrat', 0)}
+              onCheck={() => this.props.handlePartyChange('Democrat')}
             />
           </div>
           <FlatButton
@@ -75,11 +85,3 @@ class Search extends React.Component {
 }
 
 export default Search;
-
-/*
-2 options to search by
-state and name
-TODO: Turn off button based on this.props.end
-TODO: Turn off button if searching, no results
-  should return > 8
-*/
