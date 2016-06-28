@@ -9,6 +9,7 @@ import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 const style = {
   width: '376px',
 };
+const PAGINATE_BY = 8;
 
 class Search extends React.Component {
   constructor(props) {
@@ -72,11 +73,11 @@ class Search extends React.Component {
           </div>
           <FlatButton
             icon={<ArrowBack />}
-            onClick={() => this.props.getPrevMembers()}
+            onClick={() => this.props.paginate(this.state.search, PAGINATE_BY)}
           />
           <FlatButton
             icon={<ArrowForward />}
-            onClick={() => this.props.getNextMembers()}
+            onClick={() => this.props.paginate(this.state.search, PAGINATE_BY)}
           />
         </div>
       </div>
