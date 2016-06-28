@@ -23,11 +23,9 @@ exports.getAllByName = query => {
     .catch(err => console.log('error in getAllByName', err));
 };
 
-exports.getAllByStateAndParty = (query, party) => {
-  return memberCtrl.searchByStateAbbrAndParty(query, party)
+exports.getAllByStateAndParty = (query, party) => memberCtrl.searchByStateAbbrAndParty(query, party)
     .then(results => results)
     .catch(err => console.log('error in getAllByStateAndParty', err));
-};
 
 exports.getAllByState = query => {
   const keys = [];
