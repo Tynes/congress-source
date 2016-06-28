@@ -8,7 +8,8 @@ module.exports = app => {
     const query = req.query.query;
     const begin = req.query.begin || 0;
     const end = req.query.end || 8;
-    if (!query) {
+    // first case handles initial load and reset to initial
+    if (!query && !party) {
       searchMethods.getAllMembers()
         .then(response => searchMethods.extract(response, begin, end))
         .then(response => res.send(response))
