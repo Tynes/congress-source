@@ -67,6 +67,15 @@ class Http extends React.Component {
       this.search(undefined, 0, {});
     }
   }
+  paginate(query, shift) {
+    const params = {
+      searchBy: this.state.searchBy,
+      begin: this.state.begin + shift,
+      end: this.state.end + shift,
+    };
+    if (this.state.party) params.party = this.state.party;
+    this.search(query, shift, params);
+  }
 
   render() {
     return (
@@ -76,6 +85,7 @@ class Http extends React.Component {
           party={this.state.party}
           handleSearchByToggle={this.handleSearchByToggle.bind(this)}
           handlePartyChange={this.handlePartyChange.bind(this)}
+          paginate={this.paginate.bind(this)}
         />
         <Results
           members={this.state.members}
