@@ -17,18 +17,25 @@ class Http extends React.Component {
   componentWillMount() {
     this.search(undefined, 0, {});
   }
-  handleCheck(party) {
+  handlePartyChange(party) {
     if (this.state.party === party) {
-      this.setState({ party: undefined }, () => this.getMembersBetween(0, 8, 8));
+      this.setState({ party: undefined }, () => this.search(undefined, 0, {}));
     } else {
-      this.getPartyMembersBetween(party, 0, 8, 8);
+      const params = {
+        party: party,
+        searchBy: this.state.searchBy,
+        query: '',
+      };
+      this.setState({ party: party }, () => this.search(undefined, 0, params));
     }
   }
-  handleSearchToggle(parameter) {
+  handleSearchByToggle(parameter) {
     this.setState({ searchBy: parameter });
   }
   search(query, shift, options) {
-    const params = Object.keys(options).map(el => `${el}=${options[el]}&query=${query}`).join('');
+    if (query) options.query = query;
+    const params = Object.keys(options).map(el => `${el}=${options[el]}&`).join('');
+    console.log('params', params);
     axios.get(`/search?${params}`)
       .then(response => {
         console.log(response);
@@ -57,7 +64,7 @@ class Http extends React.Component {
       // send undefined as query to get initial members
       this.search(query, shift, options);
     } else {
-      this.getMembersBetween(0, 0, 0);
+      this.search(undefined, 0, {});
     }
   }
 
@@ -66,9 +73,9 @@ class Http extends React.Component {
       <div>
         <Search
           handleSearch={this.handleSearch.bind(this)}
-          handleCheck={this.handleCheck.bind(this)}
           party={this.state.party}
-          handleSearchToggle={this.handleSearchToggle.bind(this)}
+          handleSearchByToggle={this.handleSearchByToggle.bind(this)}
+          handlePartyChange={this.handlePartyChange.bind(this)}
         />
         <Results
           members={this.state.members}
