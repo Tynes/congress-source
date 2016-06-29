@@ -30,6 +30,13 @@ class Search extends React.Component {
     this.searchbar.input.value = '';
     this.props.handleSearchByToggle(searchBy);
   }
+  shouldPaginate(direction, displayed) {
+    if (direction === 'backwards') {
+      return displayed.begin === 0;
+    } else if (direction === 'forwards') {
+      return displayed.end >= displayed.length;
+    }
+  }
   render() {
     return (
       <div>
@@ -74,10 +81,12 @@ class Search extends React.Component {
           <FlatButton
             icon={<ArrowBack />}
             onClick={() => this.props.paginate(this.state.search, -(PAGINATE_BY))}
+            disabled={this.shouldPaginate('backwards', this.props.display)}
           />
           <FlatButton
             icon={<ArrowForward />}
             onClick={() => this.props.paginate(this.state.search, PAGINATE_BY)}
+            disabled={this.shouldPaginate('forwards', this.props.display)}
           />
         </div>
       </div>
