@@ -52,7 +52,7 @@ class Http extends React.Component {
   }
   handleSearch(query, shift) {
     const options = {
-      type: this.state.searchBy,
+      searchBy: this.state.searchBy,
       begin: this.state.begin,
       end: this.state.end,
     };
