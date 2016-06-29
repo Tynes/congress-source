@@ -72,6 +72,7 @@ class Http extends React.Component {
       searchBy: this.state.searchBy,
       begin: this.state.begin + shift,
       end: this.state.end + shift,
+      query: query,
     };
     if (this.state.party) params.party = this.state.party;
     this.search(query, shift, params);
