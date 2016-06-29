@@ -30,7 +30,10 @@ module.exports = app => {
       }
     }
     dbCall(query, party)
-      .then(response => searchMethods.extract(response, begin, end))
+      .then(response => {
+        const members = searchMethods.extract(response, begin, end);
+        return { members: members, length: response.length };
+      })
       .then(response => res.send(response))
       .catch(err => console.log(`error in ${dbCall}`, err));
   });
