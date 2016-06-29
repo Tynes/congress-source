@@ -73,7 +73,7 @@ class Search extends React.Component {
           </div>
           <FlatButton
             icon={<ArrowBack />}
-            onClick={() => this.props.paginate(this.state.search, PAGINATE_BY)}
+            onClick={() => this.props.paginate(this.state.search, -(PAGINATE_BY))}
           />
           <FlatButton
             icon={<ArrowForward />}
