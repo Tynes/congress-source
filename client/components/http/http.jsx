@@ -12,6 +12,7 @@ class Http extends React.Component {
       end: 8,
       party: undefined,
       searchBy: 'state',
+      length: 0,
     };
   }
   componentWillMount() {
@@ -40,11 +41,12 @@ class Http extends React.Component {
       .then(response => {
         console.log(response);
         const state = {
-          members: response.data,
+          members: response.data.members,
           begin: this.state.begin + shift,
           end: this.state.end + shift,
           party: options.party,
           searchBy: this.state.searchBy,
+          length: response.data.length,
         };
         this.setState(state, () => console.log(state));
       })
@@ -79,6 +81,11 @@ class Http extends React.Component {
   }
 
   render() {
+    const display = {
+      begin: this.state.begin,
+      end: this.state.end,
+      length: this.state.length,
+    };
     return (
       <div>
         <Search
@@ -87,6 +94,7 @@ class Http extends React.Component {
           handleSearchByToggle={this.handleSearchByToggle.bind(this)}
           handlePartyChange={this.handlePartyChange.bind(this)}
           paginate={this.paginate.bind(this)}
+          display={display}
         />
         <Results
           members={this.state.members}
