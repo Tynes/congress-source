@@ -19,14 +19,14 @@ class Http extends React.Component {
   }
   handlePartyChange(party) {
     if (this.state.party === party) {
-      this.setState({ party: undefined }, () => this.search(undefined, 0, {}));
+      this.setState({ party: undefined, begin: 0, end: 8 }, () => this.search(undefined, 0, {}));
     } else {
       const params = {
         party: party,
         searchBy: this.state.searchBy,
         query: '',
       };
-      this.setState({ party: party }, () => this.search(undefined, 0, params));
+      this.setState({ party: party, begin: 0, end: 8 }, () => this.search(undefined, 0, params));
     }
   }
   handleSearchByToggle(parameter) {
