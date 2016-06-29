@@ -4,7 +4,9 @@ import AppBar from 'material-ui/AppBar';
 class Navbar extends React.Component {
   render() {
     return (
-      <AppBar />
+      <AppBar
+        onLeftIconButtonTouchTap={() => this.props.handleMenuToggle()}
+      />
     );
   }
 }
