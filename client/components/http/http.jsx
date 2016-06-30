@@ -18,14 +18,17 @@ class Http extends React.Component {
   componentWillMount() {
     this.search(undefined, 0, {});
   }
-  handlePartyChange(party) {
+  handlePartyChange(party, query = '') {
     if (this.state.party === party) {
-      this.setState({ party: undefined, begin: 0, end: 8 }, () => this.search(undefined, 0, {}));
+      this.setState({ party: undefined, begin: 0, end: 8 }, () => {
+        const params = { query: query };
+        this.search(undefined, 0, params);
+      });
     } else {
       const params = {
         party: party,
         searchBy: this.state.searchBy,
-        query: '',
+        query: query,
       };
       this.setState({ party: party, begin: 0, end: 8 }, () => this.search(undefined, 0, params));
     }
@@ -39,7 +42,7 @@ class Http extends React.Component {
     console.log('params', params);
     axios.get(`/search?${params}`)
       .then(response => {
-        console.log(response);
+        // console.log(response);
         const state = {
           members: response.data.members,
           begin: this.state.begin + shift,
@@ -48,7 +51,7 @@ class Http extends React.Component {
           searchBy: this.state.searchBy,
           length: response.data.length,
         };
-        this.setState(state, () => console.log(state));
+        this.setState(state, () => console.log('state after request\n', state));
       })
       .catch(err => console.log('error in search', err));
   }
@@ -66,7 +69,7 @@ class Http extends React.Component {
       // send undefined as query to get initial members
       this.search(query, shift, options);
     } else {
-      this.search(undefined, 0, {});
+      this.search(undefined, 0, { party: this.state.party });
     }
   }
   paginate(query, shift) {
