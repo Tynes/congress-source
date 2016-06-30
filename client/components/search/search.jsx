@@ -21,10 +21,11 @@ class Search extends React.Component {
   handleChange(event) {
     this.setState({ search: event.target.value }, () =>this.props.handleSearch(this.state.search, 0));
   }
-  handlePartyChange(party) {
-    this.setState({ search: '' }, () => this.searchbar.input.value = '');
+  handlePartyChange(party, query) {
+    console.log('party change');
+    this.setState({ search: '' }, () => console.log(this.state));
     // this method of clearing the search bar does not work still
-    this.props.handlePartyChange(party);
+    this.props.handlePartyChange(party, query);
   }
   handleSeachByToggle(searchBy) {
     this.searchbar.input.value = '';
@@ -50,6 +51,7 @@ class Search extends React.Component {
             className="row"
             style={style}
             ref={i => this.searchbar = i}
+            value={this.state.search}
           />
           <RadioButtonGroup
             name="searchType"
@@ -70,12 +72,12 @@ class Search extends React.Component {
             <Checkbox
               label="Republican"
               checked={this.props.party === 'Republican'}
-              onCheck={() => this.props.handlePartyChange('Republican')}
+              onCheck={() => this.props.handlePartyChange('Republican', this.state.search)}
             />
             <Checkbox
               label="Democrat"
               checked={this.props.party === 'Democrat'}
-              onCheck={() => this.props.handlePartyChange('Democrat')}
+              onCheck={() => this.props.handlePartyChange('Democrat', this.state.search)}
             />
           </div>
           <FlatButton
