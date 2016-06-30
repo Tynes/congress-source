@@ -5,7 +5,7 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
-
+// resetting when party filter is on and search is empty
 const style = {
   width: '376px',
 };
@@ -19,17 +19,14 @@ class Search extends React.Component {
     };
   }
   handleChange(event) {
-    this.setState({ search: event.target.value }, () =>this.props.handleSearch(this.state.search, 0));
+    this.setState({ search: event.target.value }, () => this.props.handleSearch(this.state.search, 0));
   }
   handlePartyChange(party, query) {
-    console.log('party change');
     this.setState({ search: '' }, () => console.log(this.state));
-    // this method of clearing the search bar does not work still
     this.props.handlePartyChange(party, query);
   }
-  handleSeachByToggle(searchBy) {
-    this.searchbar.input.value = '';
-    this.props.handleSearchByToggle(searchBy);
+  handleSearchByToggle(searchBy) {
+    this.setState({ search: '' }, () => this.props.handleSearchByToggle(searchBy));
   }
   shouldPaginate(direction, displayed) {
     if (direction === 'backwards') {
@@ -57,7 +54,7 @@ class Search extends React.Component {
             name="searchType"
             defaultSelected="state"
             className="row"
-            onChange={(e, val) => this.props.handleSearchByToggle(val)}
+            onChange={(e, val) => this.handleSearchByToggle(val)}
           >
             <RadioButton
               value="state"
