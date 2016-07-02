@@ -9,22 +9,16 @@ module.exports = app => {
     let dbCall;
     if (!query && !party) {
       dbCall = searchMethods.getAllMembers;
+    } else if (searchBy === 'name' && party) {
+      dbCall = searchMethods.getAllByNameAndParty;
+    } else if (searchBy === 'name') {
+      dbCall = searchMethods.getAllByName;
+    } else if (searchBy === 'state' && party) {
+      dbCall = searchMethods.getAllByStateAndParty;
+    } else if (searchBy === 'state') {
+      dbCall = searchMethods.getAllByState;
     } else {
-      if (searchBy === 'name') {
-        if (party) {
-          dbCall = searchMethods.getAllByNameAndParty;
-        } else {
-          dbCall = searchMethods.getAllByName;
-        }
-      } else if (searchBy === 'state') {
-        if (party) {
-          dbCall = searchMethods.getAllByStateAndParty;
-        } else {
-          dbCall = searchMethods.getAllByState;
-        }
-      } else {
-        res.send(404);
-      }
+      res.send(404);
     }
     dbCall(query, party)
       .then(response => {
