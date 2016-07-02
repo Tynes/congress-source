@@ -12,7 +12,6 @@ module.exports = app => {
     if (!query && !party) {
       dbCall = searchMethods.getAllMembers;
     } else {
-      // control flow first for name vs state
       if (searchBy === 'name') {
         if (party) {
           dbCall = searchMethods.getAllByNameAndParty;
