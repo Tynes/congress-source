@@ -26,7 +26,10 @@ class Search extends React.Component {
     this.props.handlePartyChange(party, query);
   }
   handleSearchByToggle(searchBy) {
-    this.setState({ search: '' }, () => this.props.handleSearchByToggle(searchBy));
+    this.setState({ search: '' }, () => {
+      this.props.handleSearchByToggle(searchBy);
+      this.searchbar.focus();
+    });
   }
   shouldPaginate(direction, displayed) {
     if (direction === 'backwards') {
