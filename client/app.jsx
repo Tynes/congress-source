@@ -16,7 +16,6 @@ class App extends React.Component {
     };
   }
   handleMenuToggle() {
-    console.log('toggle!');
     this.setState({ isMenuOpen: !this.state.isMenuOpen });
   }
   render() {
@@ -28,6 +27,7 @@ class App extends React.Component {
           />
           <Menu
             isOpen={this.state.isMenuOpen}
+            handleMenuToggle={this.handleMenuToggle.bind(this)}
           />
           <Http />
         </div>
