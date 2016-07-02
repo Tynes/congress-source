@@ -3,9 +3,7 @@ const searchMethods = require('./controllers/searchMethods.js');
 module.exports = app => {
   // Single function that handles all search
   app.get('/search', (req, res) => {
-    const searchBy = req.query.searchBy;
-    const party = req.query.party;
-    const query = req.query.query;
+    const { searchBy, party, query } = req.query;
     const begin = req.query.begin || 0;
     const end = req.query.end || 8;
     let dbCall;
