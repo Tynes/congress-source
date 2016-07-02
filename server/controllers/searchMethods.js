@@ -23,21 +23,31 @@ exports.getAllByName = query => {
     .catch(err => console.log('error in getAllByName', err));
 };
 
-exports.getAllByStateAndParty = (query, party) => memberCtrl.searchByStateAbbrAndParty(query, party)
-    .then(results => results)
-    .catch(err => console.log('error in getAllByStateAndParty', err));
+const handleLongStateNames = (query) => {
+  const regEx = new RegExp(`^${query}`, 'i');
+  return Object.keys(stateMap)
+    .filter(el => regEx.test(el))
+    .map(el => stateMap[el]);
+};
 
-exports.getAllByState = query => {
-  const keys = [];
+exports.getAllByStateAndParty = (query, party) => {
   let promises;
   if (query.length > 2) {
-    const regEx = new RegExp(`^${query}`, 'i');
-    const states = Object.keys(stateMap);
-    states.forEach(el => {
-      if (regEx.test(el)) {
-        keys.push(stateMap[el]);
-      }
-    });
+    const keys = handleLongStateNames(query);
+    promises = keys.map(key => memberCtrl.searchByStateAbbrAndParty(key, party));
+  } else {
+    promises = [memberCtrl.searchByStateAbbrAndParty(query, party)];
+  }
+  return Promise.all(promises)
+    .then(results => _.flatten(results))
+    .catch(err => console.log('error in getAllByStateAndParty', err));
+};
+
+
+exports.getAllByState = query => {
+  let promises;
+  if (query.length > 2) {
+    const keys = handleLongStateNames(query);
     promises = keys.map(key => memberCtrl.searchByStateAbbr(key));
   } else {
     promises = [memberCtrl.searchByStateAbbr(query)];
