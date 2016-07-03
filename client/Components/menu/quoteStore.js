@@ -1,0 +1,17 @@
+module.exports = [
+  `The liberties of a people never were, nor ever will be, secure, when the transactions of their rulers may be concealed from them. -Patrick Henry`,
+  `We the People are the rightful masters of both Congress and the Courts–not to overthrow the Constitution, but to overthrow the men who pervert the Constitution. -Abraham Lincoln`,
+  `It is the duty of the patriot to protect his country from its government. -Thomas Paine`,
+  `Those people who will not be governed by God will be ruled by tyrants. -William Penn`,
+  `Now more than ever before, the people are responsible for the character of their Congress. If that body be ignorant, reckless and corrupt, it is because the people tolerate ignorance, recklessness and corruption. If it be intelligent, brave and pure, it is because the people demand these high qualities to represent them in the national legislature. -James Garfield`,
+  `I am a firm believer in the people. If given the truth, they can be depended upon to meet any national crisis. The great point is to bring them the real facts, and beer. ―Abraham Lincoln`,
+  `A vote is like a rifle: its usefulness depends upon the character of the user. ―Theodore Roosevelt`,
+  `Many forms of Government have been tried, and will be tried in this world of sin and woe. No one pretends that democracy is perfect or all-wise. Indeed, it has been said that democracy is the worst form of Government except for all those other forms that have been tried from time to time. -Winston S. Churchill`,
+  `Our safety, our liberty, depends upon preserving the Constitution of the United States as our fathers made it inviolate. The people of the United States are the rightful masters of both Congress and the courts, not to overthrow the Constitution, but to overthrow the men who pervert the Constitution. ―Abraham Lincoln`,
+  `The answer to 1984 is 1776. ―Alex E. Jones`,
+  `The strength of the Constitution lies entirely in the determination of each citizen to defend it. Only if every single citizen feels duty bound to do his share in this defense are the constitutional rights secure. ―Albert Einstein`,
+  `There has always been, and there is now, a profound conflict of interest between the people and the government of the United States. ―Howard Zinn`,
+  `I realized that this was the big secret of democracy -- that change can occur by starting off with just a few people doing something. ―Michael Moore`,
+  `As soon as any man says of the affairs of the State "What does it matter to me?" the State may be given up for lost. ―Jean-Jacques Roussea`,
+  `Librarians consider free access to information the foundation of democracy. ―Marilyn Johnson`,
+];
