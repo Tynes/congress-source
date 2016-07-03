@@ -5,7 +5,7 @@ const PORT = process.env.port || 3001;
 
 const app = express();
 const db = require('./db.js');
-app.use(express.static(`${__dirname}/../client`));
+app.use('/', express.static(`${__dirname}/../client`));
 app.use(bodyparser.json());
 require('./router.js')(app);
 
