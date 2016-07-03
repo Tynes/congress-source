@@ -1,21 +1,45 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
 
-// TODO: add back button to close menu
+import { List, ListItem } from 'material-ui/List';
+import Quotes from './quotes.jsx';
+
 // TODO: add link to github, twitter and linkedin
 // TODO: add philosophical tidbits about me
 
-const Menu = ({ isOpen, handleMenuToggle }) => (
-  <Drawer
-    open={isOpen}
-    docked={false}
-    onRequestChange={e => handleMenuToggle()}
-  >
-    <MenuItem>Github</MenuItem>
-    <MenuItem>Twitter</MenuItem>
-    <MenuItem>LinkedIn</MenuItem>
-  </Drawer>
-);
+class Menu extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      quoteIndex: 0,
+    };
+  }
+  chooseQuote(length) {
+    this.setState({
+      quoteIndex: Math.floor(Math.random() * length),
+    });
+  }
+
+  render() {
+    return (
+      <Drawer
+        open={this.props.isOpen}
+        docked={false}
+        onRequestChange={e => this.props.handleMenuToggle()}
+        width={400}
+      >
+        <Quotes
+          quoteIndex={this.state.quoteIndex}
+          chooseQuote={this.chooseQuote.bind(this)}
+        />
+        <List>
+          <ListItem primaryText="GitHub" />
+          <ListItem primaryText="Twitter" />
+          <ListItem primaryText="LinkedIn" />
+        </List>
+      </Drawer>
+    );
+  }
+}
 
 export default Menu;
