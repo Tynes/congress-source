@@ -1,7 +1,7 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
-
-import { List, ListItem } from 'material-ui/List';
+import FlatButton from 'material-ui/FlatButton';
+import FontIcon from 'material-ui/FontIcon';
 import Quotes from './quotes.jsx';
 
 // TODO: add link to github, twitter and linkedin
@@ -32,11 +32,32 @@ class Menu extends React.Component {
           quoteIndex={this.state.quoteIndex}
           chooseQuote={this.chooseQuote.bind(this)}
         />
-        <List>
-          <ListItem primaryText="GitHub" />
-          <ListItem primaryText="Twitter" />
-          <ListItem primaryText="LinkedIn" />
-        </List>
+        <div>
+          <FlatButton
+            label="GitHub"
+            linkButton={true}
+            href="https://github.com/tynes"
+            icon={<FontIcon
+              className="fa fa-github"
+            />}
+          />
+          <FlatButton
+            label="Twitter"
+            linkButton={true}
+            href="https://twitter.com/tyneslol"
+            icon={<FontIcon
+              className="fa fa-twitter"
+            />}
+          />
+          <FlatButton
+            label="LinkedIn"
+            linkButton={true}
+            href="https://www.linkedin.com/in/marktyneway"
+            icon={<FontIcon
+              className="fa fa-linkedin-square"
+            />}
+          />
+        </div>
       </Drawer>
     );
   }
