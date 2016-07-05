@@ -6,7 +6,7 @@ import Http from './Components/http/http.jsx';
 import Menu from './Components/menu/menu.jsx';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+injectTapEventPlugin({ shouldRejectClick: (lastTouchEventTimestamp, clickEventTimestamp) => true });
 
 class App extends React.Component {
   constructor() {
