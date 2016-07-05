@@ -6,6 +6,7 @@ import Picture from './picture/picture.jsx';
 import State from './state/state.jsx';
 import Timer from './timer/timer.jsx';
 import Social from './social/social.jsx';
+import Info from './info/info.jsx';
 
 class Result extends React.Component {
   constructor() {
@@ -36,20 +37,25 @@ class Result extends React.Component {
         onMouseLeave={(e) => this.handleCountdownChange(e)}
         onTouchTap={e => this.handleTouchTap(e)}
       >
-        <div>
-          <State state={member.state} />
-          <Picture id={member.id} />
-          <Timer
-            enddate={member.enddate}
-            isCountdown={this.state.isCountdown}
-          />
-        </div>
-        <div>
-          <Affiliation party={member.party} />
-          <Role role={member.role_type_label} />
-        </div>
-        <Name firstname={member.firstname} lastname={member.lastname} />
-        <Social govtrack={member.link} twitter={member.twitterid} site={member.website} />
+        <Picture id={member.id} />
+        <Info
+          party={member.party}
+          state={member.state}
+          role_type_label={member.role_type_label}
+        />
+        <Name
+          firstname={member.firstname}
+          lastname={member.lastname}
+        />
+        <Timer
+          enddate={member.enddate}
+          isCountdown={this.state.isCountdown}
+        />
+        <Social
+          govtrack={member.link}
+          twitter={member.twitterid}
+          site={member.website}
+        />
       </div>
     );
   }
