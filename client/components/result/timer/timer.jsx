@@ -21,13 +21,13 @@ const Timer = ({ enddate, isCountdown }) => {
   if (isCountdown) {
     return (
       <CountdownTimer
-        className=""
+        className="timer"
         initialTimeRemaining={getRemainingTime(enddate)}
         formatFunc={formatFunc}
       />
     );
   }
-  return <h3 className="">In office until {enddate}</h3>;
+  return <h3 className="timer">In office until {enddate}</h3>;
 };
 
 export default Timer;
