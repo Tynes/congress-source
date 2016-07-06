@@ -3,11 +3,16 @@ import FlatButton from 'material-ui/FlatButton';
 import quoteStore from './quoteStore.js';
 const quoteCount = quoteStore.length;
 
+const styles = {
+  width: '100%',
+};
+
 const Quotes = ({ quoteIndex, chooseQuote }) => (
-  <div>
+  <div className="menu-pad quote-box">
     <FlatButton
-      label="Learn!"
+      label="More Quotes!"
       onClick={() => chooseQuote(quoteCount)}
+      style={styles}
     />
     <p>
       {quoteStore[quoteIndex]}

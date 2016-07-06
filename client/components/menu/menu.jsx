@@ -24,6 +24,10 @@ class Menu extends React.Component {
         onRequestChange={e => this.props.handleMenuToggle()}
         width={400}
       >
+        <div className="menu-pad">
+          <h3>Transparent Government</h3>
+          <p>Is a good thing</p>
+        </div>
         <Quotes
           quoteIndex={this.state.quoteIndex}
           chooseQuote={this.chooseQuote.bind(this)}

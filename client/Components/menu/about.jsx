@@ -2,8 +2,12 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 
+const styles = {
+  width: '100%',
+};
+
 const About = () => (
-  <div>
+  <div className="menu-pad">
     <div>
       <h3>About</h3>
       <p>
@@ -27,6 +31,7 @@ const About = () => (
         icon={<FontIcon
           className="fa fa-github"
         />}
+        style={styles}
       />
       <FlatButton
         label="Twitter"
@@ -35,6 +40,7 @@ const About = () => (
         icon={<FontIcon
           className="fa fa-twitter"
         />}
+        style={styles}
       />
       <FlatButton
         label="LinkedIn"
@@ -43,6 +49,7 @@ const About = () => (
         icon={<FontIcon
           className="fa fa-linkedin-square"
         />}
+        style={styles}
       />
       <FlatButton
         label="Email"
@@ -51,6 +58,7 @@ const About = () => (
         icon={<FontIcon
           className="fa fa-envelope-o"
         />}
+        style={styles}
       />
     </div>
   </div>
