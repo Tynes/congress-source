@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 const Social = ({ govtrack, twitter, site }) => {
   const twitterid = `https://twitter.com/${twitter}`;
   return (
-    <div>
+    <div className="social-bar">
       <RaisedButton
         label="GovTrack"
         linkButton={true}
