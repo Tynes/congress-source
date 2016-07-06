@@ -2573,7 +2573,8 @@ html {
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 20px 25px;
   margin: 15px;
-  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); }
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+  height: 325px; }
 
 .picture {
   -webkit-clip-path: ellipse(50% 50% at 50% 50%);
@@ -2604,3 +2605,9 @@ html {
 
 .info {
   color: #9099A2; }
+
+.social-bar {
+  margin-top: 30px; }
+
+.timer {
+  margin-bottom: -10px; }
