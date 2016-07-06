@@ -2556,11 +2556,6 @@ textarea {
   overflow: visible;
   clip: auto; }
 
-@media (min-width: 1025px) {
-  .member {
-    width: 20%;
-    text-align: center; } }
-
 html {
   font-family: "Roboto", sans-serif; }
 
@@ -2574,7 +2569,9 @@ html {
   padding: 20px 25px;
   margin: 15px;
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-  height: 325px; }
+  height: 325px;
+  width: 20%;
+  text-align: center; }
 
 .picture {
   -webkit-clip-path: ellipse(50% 50% at 50% 50%);
@@ -2618,3 +2615,9 @@ html {
 
 .img-pad {
   margin-top: 15px; }
+
+.menu-pad {
+  padding: 15px; }
+
+.quote-box {
+  height: 175px; }
