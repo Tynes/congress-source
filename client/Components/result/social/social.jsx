@@ -2,30 +2,38 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
 const style = {
-  marginTop: '25px',
+  flex: '1 1 30em',
+  display: 'flex',
+};
+const innerStyle = {
+  flex: '1 1 20em',
 };
 
 const Social = ({ govtrack, twitter, site }) => {
   const twitterid = `https://twitter.com/${twitter}`;
   return (
     <div className="social-bar">
-      <div className="inner-social-bar">
-        <RaisedButton
-          label="GovTrack"
-          linkButton={true}
-          href={govtrack}
-        />
-        <RaisedButton
-          label="Twitter"
-          linkButton={true}
-          href={twitterid}
-        />
-        <RaisedButton
-          label="Personal Site"
-          linkButton={true}
-          href={site}
-        />
-      </div>
+      <RaisedButton
+        label="GovTrack"
+        linkButton={true}
+        href={govtrack}
+        style={style}
+        labelStyle={innerStyle}
+      />
+      <RaisedButton
+        label="Twitter"
+        linkButton={true}
+        href={twitterid}
+        style={style}
+        labelStyle={innerStyle}
+      />
+      <RaisedButton
+        label="Website"
+        linkButton={true}
+        href={site}
+        style={style}
+        labelStyle={innerStyle}
+      />
     </div>
   );
 };
