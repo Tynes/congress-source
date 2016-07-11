@@ -6,9 +6,10 @@ import TextField from 'material-ui/TextField';
 import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
-const style = {
-  width: '376px',
+const cancelMinWidth = {
+  minWidth: '50%',
 };
+
 const PAGINATE_BY = 8;
 
 class Search extends React.Component {
@@ -16,8 +17,25 @@ class Search extends React.Component {
     super(props);
     this.state = {
       search: '',
+      queryBarSize: '376px',
     };
   }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize.bind(this));
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize.bind(this));
+  }
+  handleResize(e) {
+    if (window.innerWidth < 425) {
+      console.log('< 425px');
+      this.setState({ queryBarSize: '300px' });
+    } else {
+      this.setState({ queryBarSize: '376px' });
+    }
+  }
+
   handleChange(event) {
     this.setState({ search: event.target.value }, () => this.props.handleSearch(this.state.search, 0));
   }
@@ -40,22 +58,25 @@ class Search extends React.Component {
   }
   render() {
     return (
-      <div className="search">
-        <h1 className="row row-responsive">Search Through Members of the US Government</h1>
-        <TextField
-          onChange={this.handleChange.bind(this)}
-          floatingLabelText="Search Here"
-          hintText="Ex Chuck Schumer or New York"
-          floatingLabelFixed={true}
-          className="row"
-          style={style}
-          ref={i => this.searchbar = i}
-          value={this.state.search}
-        />
+      <section className="search">
+        <section className="row title">
+          <h1>Search Through Members of the US Government</h1>
+        </section>
+        <section className="row query">
+          <TextField
+            onChange={this.handleChange.bind(this)}
+            floatingLabelText="Search Here"
+            hintText="Ex Chuck Schumer or New York"
+            floatingLabelFixed={true}
+            style={{ width: this.state.queryBarSize }}
+            ref={i => this.searchbar = i}
+            value={this.state.search}
+          />
+        </section>
         <RadioButtonGroup
           name="searchType"
           defaultSelected="state"
-          className="row row-responsive"
+          className="row search-by"
           onChange={(e, val) => this.handleSearchByToggle(val)}
         >
           <RadioButton
@@ -67,7 +88,7 @@ class Search extends React.Component {
             label="Name"
           />
         </RadioButtonGroup>
-        <div className="row row-responsive">
+        <section className="row filter">
           <Checkbox
             label="Republican"
             checked={this.props.party === 'Republican'}
@@ -78,20 +99,24 @@ class Search extends React.Component {
             checked={this.props.party === 'Democrat'}
             onCheck={() => this.props.handlePartyChange('Democrat', this.state.search)}
           />
-        </div>
-        <div className="row row-responsive">
+        </section>
+        <section className="row paginate">
           <FlatButton
             icon={<ArrowBack />}
             onClick={() => this.props.paginate(this.state.search, -(PAGINATE_BY))}
             disabled={this.shouldPaginate('backwards', this.props.display)}
+            className="paginate-btn"
+            style={cancelMinWidth}
           />
           <FlatButton
             icon={<ArrowForward />}
             onClick={() => this.props.paginate(this.state.search, PAGINATE_BY)}
             disabled={this.shouldPaginate('forwards', this.props.display)}
+            className="paginate-btn"
+            style={cancelMinWidth}
           />
-        </div>
-      </div>
+        </section>
+      </section>
     );
   }
 }
