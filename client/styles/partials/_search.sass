@@ -1,0 +1,88 @@
+// Search Component CSS
+
+@include media(">=1580px")
+  .search
+    display: flex
+    justify-content: space-around
+    align-items: center
+
+  .title
+    flex: 6 1 1em;
+    text-align: center
+
+  .query
+    flex: 4 1 1em;
+    text-align: center
+
+  .search-by
+    flex: 1 1 1em;
+    text-align: center
+
+  .filter
+    flex: 1 1 1em;
+    text-align: center
+
+  .paginate
+    flex: 1 1 1em;
+    text-align: center
+
+  .paginate-btn
+    max-width: 50%
+
+@include media('<1580px', '>=725px')
+  .search
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-wrap: wrap
+
+  .title
+    flex: 6 0 100%
+    text-align: center
+    width: 100%
+
+  .query
+    flex: 0 1 25%
+    text-align: center
+
+  .search-by
+    flex: 0 1 7%
+
+  .filter
+    flex: 0 1 7%
+
+  .paginate
+    flex: 0 1 15%
+    text-align: center
+
+  .paginate-btn
+    max-width: 50%
+
+@include media('<=724px')
+  .search
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-wrap: wrap
+
+  .title
+    flex: 6 0 100%
+    text-align: center
+    width: 100%
+
+  .query
+    flex: 3 1 100%
+    text-align: center
+
+  .search-by
+    flex: 0 1 15%
+
+  .filter
+    flex: 0 1 15%
+
+  .paginate
+    flex: 0 1 30%
+    text-align: center
+
+  .paginate-btn
+    max-width: 50%
