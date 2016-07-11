@@ -29,7 +29,6 @@ class Search extends React.Component {
   }
   handleResize(e) {
     if (window.innerWidth < 425) {
-      console.log('< 425px');
       this.setState({ queryBarSize: '300px' });
     } else {
       this.setState({ queryBarSize: '376px' });
