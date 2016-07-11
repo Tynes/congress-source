@@ -8,7 +8,15 @@ class Menu extends React.Component {
     super();
     this.state = {
       quoteIndex: 0,
+      menuSize: 400,
     };
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.windowSize < 425) {
+      this.setState({ menuSize: 350 });
+    } else {
+      this.setState({ menuSize: 400 });
+    }
   }
   chooseQuote(length) {
     this.setState({
@@ -22,7 +30,7 @@ class Menu extends React.Component {
         open={this.props.isOpen}
         docked={false}
         onRequestChange={e => this.props.handleMenuToggle()}
-        width={400}
+        width={this.state.menuSize}
       >
         <div className="menu-pad">
           <h3>Transparent Government</h3>
