@@ -13,7 +13,17 @@ class App extends React.Component {
     super();
     this.state = {
       isMenuOpen: false,
+      windowSize: window.innerWidth,
     };
+  }
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize.bind(this));
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize.bind(this));
+  }
+  handleResize(e) {
+    this.setState({ windowSize: window.innerWidth });
   }
   handleMenuToggle() {
     this.setState({ isMenuOpen: !this.state.isMenuOpen });
@@ -28,8 +38,11 @@ class App extends React.Component {
           <Menu
             isOpen={this.state.isMenuOpen}
             handleMenuToggle={this.handleMenuToggle.bind(this)}
+            windowSize={this.state.windowSize}
           />
-          <Http />
+          <Http
+            windowSize={this.state.windowSize}
+          />
         </div>
       </MuiThemeProvider>
     );

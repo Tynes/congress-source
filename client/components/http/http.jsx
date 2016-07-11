@@ -97,6 +97,7 @@ class Http extends React.Component {
           handlePartyChange={this.handlePartyChange.bind(this)}
           paginate={this.paginate.bind(this)}
           display={display}
+          windowSize={this.props.windowSize}
         />
         <Results
           members={this.state.members}

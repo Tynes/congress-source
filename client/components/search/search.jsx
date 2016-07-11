@@ -21,14 +21,8 @@ class Search extends React.Component {
     };
   }
 
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize.bind(this));
-  }
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize.bind(this));
-  }
-  handleResize(e) {
-    if (window.innerWidth < 425) {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.windowSize < 425) {
       this.setState({ queryBarSize: '300px' });
     } else {
       this.setState({ queryBarSize: '376px' });
