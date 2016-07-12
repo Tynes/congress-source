@@ -33,8 +33,8 @@ class Menu extends React.Component {
         width={this.state.menuSize}
       >
         <div className="menu-pad">
-          <h3>Transparent Government</h3>
-          <p>Is a good thing</p>
+          <h3 className="no-margin-bot">Transparent Government</h3>
+          <p className="no-margin-top">Is a good thing</p>
         </div>
         <Quotes
           quoteIndex={this.state.quoteIndex}
