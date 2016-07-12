@@ -10,9 +10,10 @@ const styles = {
 const Quotes = ({ quoteIndex, chooseQuote }) => (
   <div className="menu-pad quote-box">
     <FlatButton
-      label="More Quotes!"
+      label="Another Quote!"
       onClick={() => chooseQuote(quoteCount)}
       style={styles}
+      backgroundColor="#ECECEC"
     />
     <p>
       {quoteStore[quoteIndex]}
