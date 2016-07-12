@@ -2574,6 +2574,13 @@ html {
   text-align: center;
   flex: 1 1 20em; }
 
+.placeholder {
+  height: 325px;
+  width: 20%;
+  flex: 1 1 20em;
+  margin: 15px;
+  padding: 20px 25px; }
+
 .picture {
   -webkit-clip-path: ellipse(50% 50% at 50% 50%);
   clip-path: ellipse(50% 50% at 50% 50%); }
