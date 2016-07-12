@@ -1,5 +1,6 @@
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
 
 const styles = {
@@ -24,7 +25,7 @@ const About = () => (
       </p>
     </div>
     <div>
-      <FlatButton
+      <RaisedButton
         label="GitHub"
         linkButton={true}
         href="https://github.com/tynes"
@@ -33,7 +34,7 @@ const About = () => (
         />}
         style={styles}
       />
-      <FlatButton
+      <RaisedButton
         label="Twitter"
         linkButton={true}
         href="https://twitter.com/tyneslol"
@@ -42,7 +43,7 @@ const About = () => (
         />}
         style={styles}
       />
-      <FlatButton
+      <RaisedButton
         label="LinkedIn"
         linkButton={true}
         href="https://www.linkedin.com/in/marktyneway"
@@ -51,10 +52,10 @@ const About = () => (
         />}
         style={styles}
       />
-      <FlatButton
+      <RaisedButton
         label="Email"
         linkButton={true}
-        href="mailto:tyneway12@gmail.com"
+        href="mailto:mark.tyneway@gmail.com"
         icon={<FontIcon
           className="fa fa-envelope-o"
         />}
