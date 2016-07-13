@@ -54,6 +54,8 @@ class Http extends React.Component {
       })
       .catch(err => console.log('error in search', err));
   }
+  // ensures that search only happens after enough
+  // characters have been added to the query bar
   handleSearch(query, shift) {
     const options = {
       searchBy: this.state.searchBy,
@@ -68,6 +70,7 @@ class Http extends React.Component {
     } else if (query.length === 0) {
       const params = {};
       if (this.state.party) params.party = this.state.party;
+      params.searchBy = this.state.searchBy;
       this.search(undefined, 0, params);
     }
   }
