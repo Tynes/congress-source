@@ -1,7 +1,9 @@
 const searchMethods = require('./controllers/searchMethods.js');
 
+// single endpoint that uses queries to make the
+// proper database call
+
 module.exports = app => {
-  // Single function that handles all search
   app.get('/search', (req, res) => {
     const { searchBy, party, query, begin = 0, end = 8 } = req.query;
     let dbCall;
