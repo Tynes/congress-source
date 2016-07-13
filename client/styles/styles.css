@@ -2687,7 +2687,7 @@ html {
 .no-margin-top {
   margin-top: 0px; }
 
-@include-media ('>803px') {
+@media (min-width: 804px) {
   .placeholder {
     height: 325px;
     width: 20%;
@@ -2695,6 +2695,6 @@ html {
     margin: 15px;
     padding: 20px 25px; } }
 
-@include-media ('<=803px') {
+@media (max-width: 803px) {
   .placeholder {
     display: none; } }
