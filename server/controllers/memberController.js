@@ -3,23 +3,7 @@ const axios = require('axios');
 const _ = require('underscore');
 
 /*
-** getMembers from congress API endpoint
-** to become a cron job
-
-exports.updateAll = members => {
-  members.forEach(member => {
-    const model = new Member(member);
-    model.save(err => {
-      if (err) {
-        // TODO: Promisify
-        // TODO: logger
-        console.error('error', err);
-      } else {
-        // console.log('success');
-      }
-    });
-  });
-};
+https://www.govtrack.us/api/v2/role?current=true&limit=600
 */
 
 const shapeData = data => _.map(data, (member, id) => {
@@ -32,13 +16,12 @@ const shapeData = data => _.map(data, (member, id) => {
   return _.pick(flattenedMember, relevantProperties);
 });
 
-// replace localhost with the opengov api end point
-exports.getRawMembers = () => axios.get('http://localhost:3000/objects')
+// GETS then shapes the data to build to db
+exports.getRawMembers = () => axios.get('https://www.govtrack.us/api/v2/role?current=true&limit=600')
     .then(response => shapeData(response.data))
     .catch(err => console.error(err));
 
-// TODO: log the diff between the new members and the ones in the db already
-exports.syncDB = members => {
+exports.build_db = members => {
   members.forEach(member => {
     const model = new Member(member);
     model.save()
