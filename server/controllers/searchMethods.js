@@ -7,7 +7,7 @@ exports.extract = (data, begin, end) => data.slice(begin, end);
 
 exports.getAllMembers = () => memberCtrl.getMembers();
 
-exports.getAllByNameAndParty = (query, party) => {
+exports.getAllByNameAndParty = (query = '', party) => {
   const searchByLastNameAndParty = memberCtrl.searchByLastNameAndParty;
   const searchByFirstNameAndParty = memberCtrl.searchByFirstNameAndParty;
   return Promise.all([searchByLastNameAndParty(query, party), searchByFirstNameAndParty(query, party)])
@@ -30,7 +30,7 @@ const handleLongStateNames = (query) => {
     .map(el => stateMap[el]);
 };
 
-exports.getAllByStateAndParty = (query, party) => {
+exports.getAllByStateAndParty = (query = '', party) => {
   let promises;
   if (query.length > 2) {
     const keys = handleLongStateNames(query);
