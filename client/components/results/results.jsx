@@ -9,7 +9,7 @@ class Results extends React.Component {
   }
   addPlaceholders(currentSize, targetSize) {
     console.log('add', targetSize - currentSize);
-    return _.times(targetSize - currentSize, () => <Placeholder />);
+    return _.times(targetSize - currentSize, n => <Placeholder key={n * 1000} />);
   }
 
   buildCards(members) {
