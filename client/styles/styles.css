@@ -2559,11 +2559,6 @@ textarea {
 html {
   font-family: "Roboto", sans-serif; }
 
-.members {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around; }
-
 .member {
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 20px 25px;
@@ -2581,23 +2576,6 @@ html {
 .result-top {
   display: inline-block;
   width: 30%; }
-
-.result-middle {
-  display: inline-block;
-  width: 50%; }
-
-.row {
-  display: inline-block; }
-
-.row-responsive {
-  flex: 1 1 20em; }
-
-.right-push {
-  float: right;
-  padding: 0px 25px; }
-
-#search {
-  width: 375px; }
 
 .name {
   font-size: 2.5em;
@@ -2619,6 +2597,14 @@ html {
 
 .img-pad {
   margin-top: 15px; }
+
+.members {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around; }
+
+.row {
+  display: inline-block; }
 
 @media (min-width: 1580px) {
   .search {
