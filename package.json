@@ -5,12 +5,12 @@
   "main": "client/app.js",
   "scripts": {
     "test": "mocha ./.test-setup.js client/**/*.test.jsx",
-    "start": "webpack -w",
+    "start": "webpack && NODE_ENV='production' node server/server.js",
+    "watch": "webpack -w",
     "build-css": "node-sass client/styles/styles.sass client/styles/styles.css",
     "watch-css": "node-sass -w client/styles/styles.sass client/styles/styles.css",
     "serve-json": "json-server db.json",
-    "serve-dev": "ENV='dev' node server/server.js",
-    "serve": "nodemon -x npm run serve-dev"
+    "start-dev": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
