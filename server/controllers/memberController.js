@@ -17,8 +17,8 @@ const shapeData = data => _.map(data, (member, id) => {
 });
 
 // GETS then shapes the data to build to db
-exports.getRawMembers = () => axios.get('https://www.govtrack.us/api/v2/role?current=true&limit=600')
-    .then(response => shapeData(response.data))
+exports.getRawMembersAndFormat = () => axios.get('https://www.govtrack.us/api/v2/role?current=true&limit=600')
+    .then(response => shapeData(response.data.objects))
     .catch(err => console.error(err));
 
 exports.build_db = members => {
