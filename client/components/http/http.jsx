@@ -14,6 +14,10 @@ class Http extends React.Component {
       searchBy: 'state',
       length: 0,
     };
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handlePartyChange = this.handlePartyChange.bind(this);
+    this.handleSearchByToggle = this.handleSearchByToggle.bind(this);
+    this.paginate = this.paginate.bind(this);
   }
   componentWillMount() {
     this.search(undefined, 0, {});
@@ -94,11 +98,11 @@ class Http extends React.Component {
     return (
       <div>
         <Search
-          handleSearch={this.handleSearch.bind(this)}
+          handleSearch={this.handleSearch}
           party={this.state.party}
-          handleSearchByToggle={this.handleSearchByToggle.bind(this)}
-          handlePartyChange={this.handlePartyChange.bind(this)}
-          paginate={this.paginate.bind(this)}
+          handleSearchByToggle={this.handleSearchByToggle}
+          handlePartyChange={this.handlePartyChange}
+          paginate={this.paginate}
           display={display}
           windowSize={this.props.windowSize}
         />
