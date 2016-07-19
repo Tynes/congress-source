@@ -15,7 +15,7 @@ db.once('open', () => {
   // initial population of db
   if (process.env.SEED) {
     console.log('seeding db');
-    memberCtrl.getRawMembers()
+    memberCtrl.getRawMembersAndFormat()
       .then(data => memberCtrl.build_db(data));
   }
 });
