@@ -4,12 +4,13 @@ import About from './about.jsx';
 import Quotes from './quotes.jsx';
 
 class Menu extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       quoteIndex: 0,
       menuSize: 400,
     };
+    this.chooseQuote = this.chooseQuote.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.windowSize < 425) {
@@ -38,7 +39,7 @@ class Menu extends React.Component {
         </div>
         <Quotes
           quoteIndex={this.state.quoteIndex}
-          chooseQuote={this.chooseQuote.bind(this)}
+          chooseQuote={this.chooseQuote}
         />
         <About />
       </Drawer>
