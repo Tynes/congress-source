@@ -119,6 +119,8 @@ Search.propTypes = {
   party: React.PropTypes.string,
   handlePartyChange: React.PropTypes.func,
   handleSearch: React.PropTypes.func,
+  handleSearchByToggle: React.PropTypes.func,
+  display: React.PropTypes.object,
 };
 
 export default Search;
