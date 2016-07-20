@@ -114,4 +114,11 @@ class Search extends React.Component {
   }
 }
 
+Search.propTypes = {
+  paginate: React.PropTypes.func,
+  party: React.PropTypes.string,
+  handlePartyChange: React.PropTypes.func,
+  handleSearch: React.PropTypes.func,
+};
+
 export default Search;
