@@ -11,4 +11,8 @@ class Navbar extends React.Component {
   }
 }
 
+Navbar.propTypes = {
+  handleMenuToggle: React.PropTypes.func,
+};
+
 export default Navbar;
