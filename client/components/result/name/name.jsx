@@ -7,4 +7,9 @@ const Name = ({ firstname, lastname }) => {
   );
 };
 
+Name.propTypes = {
+  firstname: React.PropTypes.string,
+  lastname: React.PropTypes.string,
+};
+
 export default Name;
