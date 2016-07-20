@@ -8,7 +8,6 @@ class Results extends React.Component {
     super(props);
   }
   addPlaceholders(currentSize, targetSize) {
-    console.log('add', targetSize - currentSize);
     return _.times(targetSize - currentSize, n => <Placeholder key={n * 1000} />);
   }
 
@@ -26,5 +25,9 @@ class Results extends React.Component {
     );
   }
 }
+
+Results.propTypes = {
+  members: React.PropTypes.array,
+};
 
 export default Results;
