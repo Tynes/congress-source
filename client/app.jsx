@@ -15,6 +15,7 @@ class App extends React.Component {
       isMenuOpen: false,
       windowSize: window.innerWidth,
     };
+    this.handleMenuToggle = this.handleMenuToggle.bind(this);
   }
   componentDidMount() {
     window.addEventListener('resize', this.handleResize.bind(this));
@@ -33,11 +34,11 @@ class App extends React.Component {
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div>
           <Navbar
-            handleMenuToggle={this.handleMenuToggle.bind(this)}
+            handleMenuToggle={this.handleMenuToggle}
           />
           <Menu
             isOpen={this.state.isMenuOpen}
-            handleMenuToggle={this.handleMenuToggle.bind(this)}
+            handleMenuToggle={this.handleMenuToggle}
             windowSize={this.state.windowSize}
           />
           <Http
