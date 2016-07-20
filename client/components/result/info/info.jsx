@@ -9,4 +9,10 @@ const Info = ({ party, state, role_type_label }) => {
   );
 };
 
+Info.propTypes = {
+  party: React.PropTypes.string,
+  state: React.PropTypes.string,
+  role_type_label: React.PropTypes.string,
+};
+
 export default Info;
