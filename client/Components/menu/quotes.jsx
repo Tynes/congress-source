@@ -21,4 +21,9 @@ const Quotes = ({ quoteIndex, chooseQuote }) => (
   </div>
 );
 
+Quotes.propTypes = {
+  quoteIndex: React.PropTypes.number,
+  chooseQuote: React.PropTypes.func,
+};
+
 export default Quotes;
