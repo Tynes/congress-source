@@ -16,12 +16,13 @@ class App extends React.Component {
       windowSize: window.innerWidth,
     };
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
   componentDidMount() {
-    window.addEventListener('resize', this.handleResize.bind(this));
+    window.addEventListener('resize', this.handleResize);
   }
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize.bind(this));
+    window.removeEventListener('resize', this.handleResize);
   }
   handleResize(e) {
     this.setState({ windowSize: window.innerWidth });
