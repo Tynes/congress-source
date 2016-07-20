@@ -10,7 +10,7 @@ const Picture = ({ id }) => {
 };
 
 Picture.propTypes = {
-  id: React.PropTypes.string,
+  id: React.PropTypes.number,
 };
 
 export default Picture;

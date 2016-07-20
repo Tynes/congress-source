@@ -12,9 +12,6 @@ class Result extends React.Component {
       isCountdown: false,
     };
   }
-  componentWillMount() {
-    console.log(this.props);
-  }
   handleCountdownChange(e) {
     e.preventDefault();
     this.setState({ isCountdown: !this.state.isCountdown });
