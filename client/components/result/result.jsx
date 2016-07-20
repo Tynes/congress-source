@@ -58,4 +58,8 @@ class Result extends React.Component {
   }
 }
 
+Result.propTypes = {
+  member: React.PropTypes.object,
+};
+
 export default Result;
