@@ -30,7 +30,7 @@ class Menu extends React.Component {
       <Drawer
         open={this.props.isOpen}
         docked={false}
-        onRequestChange={e => this.props.handleMenuToggle()}
+        onRequestChange={() => this.props.handleMenuToggle()}
         width={this.state.menuSize}
       >
         <div className="menu-pad">
@@ -46,5 +46,11 @@ class Menu extends React.Component {
     );
   }
 }
+
+Menu.propTypes = {
+  isOpen: React.PropTypes.bool,
+  handleMenuToggle: React.PropTypes.func,
+  windowSize: React.PropTypes.number,
+};
 
 export default Menu;
