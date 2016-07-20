@@ -115,4 +115,8 @@ class Http extends React.Component {
   }
 }
 
+Http.propTypes = {
+  windowSize: React.PropTypes.number,
+};
+
 export default Http;
