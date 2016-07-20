@@ -38,4 +38,10 @@ const Social = ({ govtrack, twitter, site }) => {
   );
 };
 
+Social.propTypes = {
+  govtrack: React.PropTypes.string,
+  twitter: React.PropTypes.string,
+  site: React.PropTypes.string,
+};
+
 export default Social;
