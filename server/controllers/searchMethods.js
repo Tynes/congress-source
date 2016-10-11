@@ -43,7 +43,6 @@ exports.getAllByStateAndParty = (query = '', party) => {
     .catch(err => console.log('error in getAllByStateAndParty', err));
 };
 
-
 exports.getAllByState = query => {
   let promises;
   if (query.length > 2) {

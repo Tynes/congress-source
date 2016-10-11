@@ -5,7 +5,7 @@
   "main": "client/app.js",
   "scripts": {
     "test": "mocha ./.test-setup.js client/**/*.test.jsx",
-    "start": "webpack && NODE_ENV=production node server/server.js",
+    "start": "webpack -p && NODE_ENV=production node server/server.js",
     "watch": "webpack -w",
     "build-css": "node-sass client/styles/styles.sass client/styles/styles.css",
     "watch-css": "node-sass -w client/styles/styles.sass client/styles/styles.css",

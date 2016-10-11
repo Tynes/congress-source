@@ -28,4 +28,9 @@ module.exports = app => {
       .then(response => res.send(response))
       .catch(err => console.log(`error in ${dbCall}`, err));
   });
+  app.get('/test', (req, res) => {
+    searchMethods.buildDB()
+      .then(response => res.send(response))
+      .catch(err => console.log('error', err));
+  });
 };

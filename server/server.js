@@ -16,7 +16,7 @@ db.once('open', () => {
   if (process.env.SEED) {
     console.log('seeding db');
     memberCtrl.getRawMembersAndFormat()
-      .then(data => memberCtrl.build_db(data));
+      .then(data => memberCtrl.buildDB(data));
   }
 });
 

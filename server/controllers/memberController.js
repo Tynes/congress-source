@@ -21,7 +21,7 @@ exports.getRawMembersAndFormat = () => axios.get('https://www.govtrack.us/api/v2
     .then(response => shapeData(response.data.objects))
     .catch(err => console.error(err));
 
-exports.build_db = members => {
+exports.buildDB = members => {
   members.forEach(member => {
     const model = new Member(member);
     model.save()

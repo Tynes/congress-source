@@ -40,10 +40,10 @@ class Http extends React.Component {
   handleSearchByToggle(parameter) {
     this.setState({ searchBy: parameter });
   }
+  // good place to debug inside of search
   search(query, shift, options) {
     if (query) options.query = query;
     const params = Object.keys(options).map(el => `${el}=${options[el]}&`).join('');
-    console.log('params', params);
     axios.get(`/search?${params}`)
       .then(response => {
         const state = {
@@ -54,7 +54,7 @@ class Http extends React.Component {
           searchBy: this.state.searchBy,
           length: response.data.length,
         };
-        this.setState(state, () => console.log('state after request\n', state));
+        this.setState(state);
       })
       .catch(err => console.log('error in search', err));
   }

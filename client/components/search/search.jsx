@@ -19,6 +19,7 @@ class Search extends React.Component {
       search: '',
       queryBarSize: '376px',
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,7 +34,7 @@ class Search extends React.Component {
     this.setState({ search: event.target.value }, () => this.props.handleSearch(this.state.search, 0));
   }
   handlePartyChange(party, query) {
-    this.setState({ search: '' }, () => console.log(this.state));
+    this.setState({ search: '' });
     this.props.handlePartyChange(party, query);
   }
   handleSearchByToggle(searchBy) {
@@ -57,7 +58,7 @@ class Search extends React.Component {
         </section>
         <section className="row query">
           <TextField
-            onChange={this.handleChange.bind(this)}
+            onChange={this.handleChange}
             floatingLabelText="Search Here"
             hintText="Ex Chuck Schumer or New York"
             floatingLabelFixed={true}
